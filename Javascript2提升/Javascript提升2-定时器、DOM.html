@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #box2{
+            height: 200px;
+        }
+        #fly{
+            height: 100px;
+            width: 100px;
+            background-color: pink;
+            position: absolute;
+            left: 0;
+            top:0;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="test2.css">
+</head>
+<body style="height: 1000px;position: relative">
+    <button onclick="func1()">按钮1</button>
+
+    <div id="idDiv"></div>
+
+    <div class="classDiv"></div>
+    <div class="classDiv"></div>
+    <div class="classDiv"></div>
+    <div class="classDiv"></div>
+
+    <input type="text" name="inputText">
+    <input type="text" name="inputText">
+    <input type="text" name="inputText">
+
+    <input type="text" id="in" placeholder="请留下你的大名！" my="我的">
+    <button onclick="func2()">按钮2</button>
+    <button onclick="func3()">按钮3</button>
+
+    <div id="box">
+        我是个盒子
+    </div>
+
+    <div id="box2" style="width: 100px;background-color: red;position: relative"></div>
+    <button onclick="changeColor()">换颜色</button>
+
+    <div id="box3"></div>
+    <button onclick="change_color()">换颜色</button>
+
+    <div id="fly" >
+    </div>
+    <button onclick="fly()">走你</button>
+
+    <script src="test2.js" type="text/javascript" charset="UTF-8"></script>
+</body>
+</html>

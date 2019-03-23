@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 36、函数概述
+        // function 函数名(参数列表) {
+        //      语句
+        //      return 表达式;
+        // }
+
+        // 37、最简单的函数(无参无返回值)
+        function func(){
+            console.log("sunck is a good man")
+        }
+        func();
+
+        // 38、函数的参数
+        // 39、函数的返回值
+        // 40、变量的作用域
+        let num1 = 10;
+        function func2() {
+            console.log(num1);
+            num1 = 20;
+            p = 30
+        }
+        func2();
+        console.log("num = " + num1);
+        console.log(p);
+        // 在python中在函数内是不能改变全局变量的值的，而在js中是可以的
+        // 在函数里如果没有用var语句定义的变量默认为全局的
+
+        // 41、变量提升
+        // 42、函数也是一种数据
+        function func3(num1, num2){
+            return num1 + num2
+        }
+        let a = func3;
+        console.log(a(4, 5));
+
+        // 43、匿名函数
+        let f = function (a, b){
+            return a + b
+        };
+        console.log(f(3, 4));
+
+        // 44、即时函数(马上执行)    (匿名函数)(匿名函数的参数)
+        (function(str){
+            console.log(str)
+        })("sunck is a good man");
+
+        // 45、认识数组
+        // 46、创建数组
+        // 47、数组元素的访问(赋值与取值)
+        let arr = [1, 2, 3, 4, 5];
+        console.log(typeof(arr));
+        for (let i = 0; i<arr.length; i++){
+            console.log("arr[%d] = %d", i, arr[i])
+        }
+
+        let arr1 = new Array(3);    // 定义一个长度为3的数组
+        arr1[0] = 1;
+        arr1[1] = 2;
+        arr1[2] = 3;
+        arr1[3] = 4;
+        // 和python不同，超过并不会报错
+        console.log(arr1);
+
+        // 48、数组长度length、元素的更新、增加和删除
+        arr1[2] = 5;
+        arr1.length = 3;
+        console.log(arr1);
+        arr1[10] = 10;  // 会有中间几个未定义元素的位置
+        delete arr1[1]; // 删除元素后位置还在
+        console.log(arr1);
+        console.log(arr1[1]);
+
+        // 49、数组的遍历 (for (let j in arr){console.log(j);})  注意这里的j为下标并不是元素
+        // 50、数组中的常用方法
+        arr1.push(6);   // 往最后插入元素
+        arr1.unshift(7); // 往最前面插入元素
+        arr1.pop();     // 删除最后一个元素
+        arr1.shift();   // 删除最前面一个元素
+        console.log(arr1);
+        console.log(arr1.join("&")); // 进行拼接，得到字符串
+        console.log(arr1.reverse()); // 倒置
+        console.log(arr1.slice(6, 9)); // 截取，左闭右开
+        let arr2 = arr1.concat([11, 12, 13]); // 拼接
+        console.log(arr2);
+        console.log(arr1.indexOf(1)); // 查找，没有为-1
+        console.log(arr1.lastIndexOf(1)); // 查找，从最后一个开始匹配
+
+        // 51、数组排序
+        console.log(arr1.sort()); // 默认升序，降序使用reverse()即可
+
+        // 52、数组的数组(多维数组)
+        // 53、字符串
+        // 54、字符串的长度 str.length 注意是根据各国的字符计算的并不是按照字节
+
+        // 55、字符串的常用方法
+        let str1 = "sunck is a good good man凯";
+        console.log(str1.charAt(1));  // 获取指定下表的字符
+        console.log(str1.charCodeAt(19));   // 获取指定下标的字符的ASCII码(Unicode)
+        console.log(String.fromCharCode(20975)); // 将ASCII码转换成对应的字符
+        console.log(str1.toLowerCase());    // 小写字符转换成大写字符
+        console.log(str1.toLowerCase());
+
+        console.log(str1.indexOf("good"));  // 查找单词，得到索引或-1，多个得到第一个
+        console.log(str1.lastIndexOf("a")); // 多个得到最后那个
+        console.log(str1.replace("good", "nice"));  // 替换,但只能替换第一个出现的子串，如果想全部替换需要正则
+        console.log(str1.substring(11, 15));   // 从指定的下标截取到指定的下标
+        console.log(str1.substr(11, 3));   // 从参数1下标处开始截取参数2长度的字符串
+        let array = str1.split(" ");
+        console.log(array);         // 字符串分割
+        console.log(array.join("+"));
+
+        let str2 = "abc";
+        let str3 = "acd";
+        console.log(str2.localeCompare(str3));   // 比较大小，左边大得+1，右边大得-1，相等为0
+
+        // 56、Math对象
+        console.log(parseInt(Math.random() * 5 + 2))
+        // parseInt(Math.random() * (y - x + 1) + x)    得到x到y(包含x、y)之间的随机数
+    </script>
+</body>
+</html>

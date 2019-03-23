@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    1、JavaScript简介
+    什么是Javascript?
+        弱类型语言
+        是一种基于对象和事件驱动并具有安全性能的脚本语言
+        基于对象：基于对象的编程语言没有提供像抽象、继承、重载等有关面向对象语言的许多功能。而是把其他语言所创建
+        的复杂对象统一起来，从而形成一个非常强大的对象系统。基于对象的编程语言还是具有一些面向对象的基本特征。它
+        可以根据需要创建自己的对象，从而进一步扩大语言的应用范围，增强编写功能强大的Web文档。
+        事件驱动：鼠标点击、键盘输入等启动预先设置的相应动作
+        脚本语言：不需要通过服务器来执行的属于前台的语言
+
+    Javascript特点
+        基于对象
+        跨平台
+        改善用户体验
+        动态性
+
+    Javascript基本思想
+        网页都是由一个一个对象(如标签对象或元素)构成的
+        对象都能够被js操作(改变状态)
+        我们通过js程序能决定怎么操作(改变状态)
+
+    Javascript的组成
+        ECMAScript:变量
+                   运算符与表达式
+                   流程控制
+                   函数
+                   数组Array
+                   字符串String
+                   Math
+                   日期Data
+        BOM:使用js控制浏览器
+        DOM:使用js控制HTML页面中的标签
+-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--导入，相当于执行。执行完js代码再往下操作-->
+    <script src="test.js" type="text/javascript" charset="UTF-8">
+        // 如果script标签中有scr去引入其他js文件，则在此标签中的代码失效
+    </script>
+</head>
+<body>
+    <button>按钮</button>
+
+    <script type="text/javascript">
+        // 2、HTML中添加JS代码、注释方法、输出方式
+        document.write("sunck is a good man");
+        console.log("sunck is a nice man");
+        // alert("sunck is a handsome man");
+
+        // 3、document输出标签
+        // document.write可以直接把引号内的标签渲染，其他的则不行
+        console.log("<h1>sunck</h1>");
+        alert("<h1>sunck</h1>");
+        document.write("<h1>sunck</h1>");
+
+        /* 4、JS中的数据类型
+            一、基本数据类型
+                1、数字(Number):包括浮点数与整数
+                2、字符串(String):包括由任意数量字符组成的序列
+                3、布尔值(Boolean):包括True和False
+                4、Undefined:当我们试图访问一个不存在的变量时，就会得到一个特殊的值undefined。除此之外
+                             使用已定义却未赋值的变量也会如此，因为js会自动将变量在初始化之前的值设定为
+                             undefined。而Undefined类型的值只有一个，那就是undefined
+                5、Null:只包含一个值的特殊数据类型。所谓的null值，通常是没有值或空值，不代表任何东西。
+                        null与undefined最大的不同在于，被赋予null的变量通常被认为是一定定义了的，只不过
+                        它不代表任何东西。
+            二、非基本数据类型(对象)
+        */
+
+        // 5、标识符(和python基本相同，js同样区分大小写)
+        // 6、变量与常量
+        // 变量的定义: var(let) 变量名;
+        //      块作用域由 { } 包括，if语句和 for语句里面的{ }也属于块作用域
+        //      var定义的变量，没有块的概念，可以跨块访问, 不能跨函数访问。
+        //      let定义的变量，只能在块作用域里访问，不能跨块访问，也不能跨函数访问。
+        //      const用来定义常量，使用时必须初始化(即必须赋值)，只能在块作用域里访问，而且不能修改。
+        // 数据的存储: 变量名 = 表达式
+        let num1;
+        num1 = 10;
+        console.log(typeof num1);
+
+        // 7、数字和查看类型操作符
+        let num2;
+        num2 = 10;
+        let sum1 = num1 + num2;
+        console.log("sum = " + sum1); // 会自动调用toString(sum)转成String类型
+
+        // let num3 = Infinity;     超过了js能表示数字的范围，使用Infinity，但Infinity不表示无穷大
+        // let num4 = NaN;          表示这个值不是数字，但事实上NaN依然属于数字类型，只不过是一种特殊的数字罢了
+
+        // 8、同一命名空间
+
+        // 9、字符串拼接
+
+        // 10、布尔值   let a = true;    let b = false;
+
+        // 11、falsy值和truthy值   用于判断   0、""、NaN、undefined、null、false为flasy，其他都为truthy
+
+        // 12、其他基本类型转换成Number类型
+        // 13、其他基本类型转换成String类型
+        // 14、其他基本类型转换成Boolean类型
+        // 15、isNaN()函数和isFinite()函数
+
+        // 16、prompt输入框
+        let num = parseInt(prompt("请输入一个数字"));  //parseInt() 转为number类型
+        console.log(typeof num);
+
+        // 17、算数运算符和算数运算表达式    Infinity + Infinity = NaN;   任何数与NaN运算结果都是NaN
+        // 18、赋值运算符和赋值运算表达式
+        // 19、自增自减运算符和自增自减运算表达式
+        let num5 = 10;
+        let num6 = 10;
+        console.log(num5++);
+        console.log(num5);
+        console.log(++num6);
+        console.log(num6);
+
+        // 20、复合运算符 +=
+
+        // 21、if语句
+        /*  格式：
+            if (表达式)
+            {
+                语句
+            }
+         */
+
+        // 22、if-else语句
+        /*  格式：
+            if (表达式)
+            {
+                语句1
+            } else {
+                语句2
+            }
+        */
+
+        // 23、关系运算符和关系运算表达式 >   <   >=  <=  !=  ==  ===  !=  !==
+        // console.log(1 == 1);
+        // console.log(1 == "1");
+        // console.log(1 === "1");
+        //  ==  值相等就可以
+        //  === 绝对相等,值和类型都要相等
+
+        // 24、三目运算符和三目运算符表达式        ?:
+        // 表达式 ? 表达式1 : 表达式2
+        // 功能:如果表达式的值为真，则计算表达式1的值，如果表达式的值为假，则计算表达式2的值
+        // 值:如果表达式的值为真，则三目运算表达式的值为表达式1的值，否则为表达式2的值
+        let a = 0?2:3;
+        console.log(a);
+
+        // 25、逻辑与运算符    &&
+        // 26、逻辑或运算符    ||
+        // 27、逻辑非运算符    !
+
+        // 28、if-else-if语句
+        /* if (表达式1){
+            语句1;
+        }  else if (表达式2){
+            语句2;
+        }
+        ...
+        else{
+            语句e;
+        }
+        */
+
+        // 29、switch语句与break语句
+        /* switch(表达式){
+                case 标号1:
+                    语句1;
+                case 标号2:
+                    语句2;
+                    break;
+                ......
+                default:
+                    语句f;
+           }
+           匹配到哪个标号，跳到对应标号处继续向下执行，如果不想执行下面的语句，break跳出
+         */
+
+        // 30、while语句
+        // 31、do-while语句
+        /* do{
+                语句
+           } while (表达式)
+        不管如何都会先执行一次语句
+        */
+        let sum2 = 0;
+        let num7 = 1;
+        do {
+            sum2 += num7;
+            num7 ++;
+        } while (num7 <= 10);
+        console.log(sum2, num7);
+
+        // 32、for语句
+        // for (语句1;表达式;语句2){
+        //      语句3
+        // }
+        let sum3 = 0;
+        for (let num8 = 1; num8 <= 10; num8++){
+            sum3 += num8;
+        }
+        console.log(sum3);
+        /* for(;;){
+                console.log("sss")
+           }
+        */
+
+        // 33、break语句
+        // 34、continue语句
+        // 35、for-in语句
+        let arr = ['a', 'b', 'c', 'd', 'e'];
+        for (let i in arr){
+            console.log("index:" + i + " value:" + arr[i]);
+        }
+    </script>
+</body>
+</html>
