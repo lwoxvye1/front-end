@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        /*
+        一、属性选择器
+        [attr *= val]
+        如果元素用attr表示的属性的属性值中包含用val指定的字符，则选中该元素
+        [attr ^= val]
+        如果元素用attr表示的属性的属性值由val字符开头，则选中该元素
+        [attr $= val]
+        如果元素用attr表示的属性的属性值以val结尾，则选中该元素
+        */
+        p[class *= "tem"]{
+            background-color: red;
+        }
+        /*
+        二、结构性伪类选择器
+        1、伪元素选择器
+        first-line伪元素选择器
+            选中某个元素中的第一行文字
+        first-letter伪元素选择器
+            选中某个元素中的文字首字母或者第一个字
+        before伪元素选择器
+            用于在某个元素之前插入一些内容
+        after伪元素选择器
+            用于在某个元素之后插入一些内容
+        */
+        #box:first-line{
+            color: yellow;
+        }
+        #box:first-letter{
+            font-size: 30px;
+        }
+        p:before{
+            content: '*';
+        }
+        p:after{
+            content: '!';
+            color: green;
+        }
+        /*
+        2、结构性伪类选择器
+        选择器root、not、empty和target
+        root: 选中页面的根元素(html元素)
+        not: 排除某个结构元素下的某个子元素
+        empty: 指定内容为空白元素
+        target: 使用target选择器来对页面中某个target元素()指定样式，该样式只在用户点击了
+                页面中的超链接，并且跳转到target元素后起作用
+        选择器first-child、last-child、nth-child、nth-last-child
+        nth-child:选择第n个子元素
+        */
+        :root{
+            background-color: pink;
+        }
+        p:not(.item2){
+            height: 50px;
+        }
+        div:target{
+            background-color: skyblue;
+        }
+        .i9 a:first-child{
+            background-color: black;
+        }
+        /*
+        3、ul元素状态伪类选择
+        E: hover
+        E: active
+        E: focus    聚焦状态下
+        E: enabled
+        E: disabled
+        E: read-only
+        E: read-write
+        E: checked  选中状态下
+        E: indeterminate
+
+        ~ 通用兄弟元素选择器
+        */
+        #lab1 input:first-child:focus{
+            background-color: brown;
+        }
+        #lab1 input:last-child:disabled{
+            background-color: gray;
+        }
+        #check1:checked + label{
+            background-color: blueviolet;
+        }
+        /*   ~ 为a1后面所有的a兄弟标签，+ 就一个  */
+        #a1 ~ a{
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <p class="item1">fgaioefg</p>
+    <p class="item2">fgaioefg</p>
+    <p class="item3">fgaioefg</p>
+    <p class="item4">fgaioefg</p>
+    <p class="item5">fgaioefg</p>
+    <p class="item6">fgaioefg</p>
+    <p class="item7">fgaioefg</p>
+    <p class="i8">fgaioefg</p>
+    <p class="i9">fgaioefg
+        <a id="a1" href="#box1">item1</a>
+        <a id="a2" href="#box2">item2</a>
+        <a id="a3" href="#box3">item3</a>
+    </p>
+
+    <div id="box">
+        feiwojfoic<br>
+        fwopvoxkvopsaa<br>
+        dqwopdipqfka<br>
+        acmaopfkad<br>
+        cqiopwep[cvoaop<br>
+    </div>
+    <div id="box1">item1</div>
+    <div id="box2">item2</div>
+    <div id="box3">item3</div>
+
+    <label id="lab1">
+        <input type="text">
+        <input type="text" disabled>
+    </label>
+    <input type="checkbox" checked id="check1">
+    <label for="check1">ffaw</label>
+</body>
+</html>

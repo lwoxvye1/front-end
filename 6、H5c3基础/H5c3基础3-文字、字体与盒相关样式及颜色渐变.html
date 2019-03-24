@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*
+        文字与字体相关样式
+        一、给文字添加阴影  -- text-shadow
+        语法:text-shadow:length1 length2 length3 color;
+        length1: 必选参数，指阴影离开文字的横方向位移，正数为向右
+        length2: 必选参数，指阴影离开文字的纵方向位移，正数为向下
+        length3: 可选参数，指阴影的模糊半径，值越大，模糊的范围越大。省略则默认为0，不向外模糊
+        color: 可选参数，可以位于前三个参数之前，也可在之后，省略该参数时，
+               CSS3中用浏览器指定的默认色
+        */
+        p{
+            font-size: 50px;
+            text-shadow: 10px 10px gray;
+        }
+        /*
+        二、文字自动换行    -- word-break
+        normal      默认
+        break-all   允许在单词内换行
+        keep-all    只能在半角空格或连字符处换行(但谷歌、火狐不支持)
+        */
+        #box{
+            width: 100px;
+            background-color: red;
+            word-break: normal;
+        }
+        /*
+        三、文本效果  -- text-overflow(文字溢出处理)
+        */
+        #box2{
+            width: 100px;
+            background-color: yellow;
+            overflow: hidden;
+            white-space: nowrap;    /*不换行*/
+            text-overflow: ellipsis;
+        }
+        /*
+        盒相关样式
+        一、盒阴影   -- box-shadow
+        语法: box-shadow: length1 length2 length3 color;
+        四个参数的使用类似text-shadow中参数
+
+        创建盒内阴影:
+        语法: box-shadow: length1 length2 length3 length4 color;
+        length1:水平方向的偏移量
+        length2:垂直方向的偏移量
+        length3:模糊半径
+        length4:展开半径
+        color:阴影颜色
+
+        二、圆角    -- border-radius
+        一个值、两个值、三个值、四个值对应的情况
+        */
+        #box3{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            border-radius: 10px  50px;
+        }
+        /*
+        三、使用图像边框    -- border-image
+        */
+
+        /*
+        颜色渐变
+        CSS提供了创建颜色渐变的方式，在两个或更多的颜色之间进行平滑的过渡
+        浏览器支持两种颜色的渐变:
+        1、线性渐变
+        2、径向渐变
+
+        线性渐变
+        background: linear-gradient();
+        三个属性分别设置，渐变方向或角度(deg)，第一张颜色，第二种颜色
+        */
+        #box4{
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(to left top, red, yellow, blue);
+        }
+        /* 文字渐变 */
+        #box5{
+            font-size: 50px;
+            font-weight: 900;
+            background: linear-gradient(pink, blue);
+            -webkit-background-clip: text;  /* -webkit 谷歌浏览器专用*/
+            -webkit-text-fill-color: transparent;
+        }
+        /* 径向渐变
+        radial-gradient(形状 大小 at位置, 颜色1, 颜色2, ...)
+        在参数中指定渐变的形状:circle   ellipse(椭圆形、默认值)
+        */
+        #box6{
+            width: 200px;
+            height: 100px;
+            background: radial-gradient(circle at 80px, red, yellow);
+        }
+        /*
+        重复渐变
+        */
+        #box7{
+            width: 200px;
+            height: 200px;
+            /* 前面的一定要比后面的小 */
+            background: repeating-radial-gradient(aqua 10%, blue 20%);
+        }
+    </style>
+</head>
+<body>
+    <p>
+        sunck is a good man
+    </p>
+    <div id="box">
+        qwiofajovoaifjioqfpacpkaopdaklfhjklavlqajgfqoiasdjvalvm,
+    </div>
+    <div id="box2">
+        qwiofajovoaifjioqfpacpkaopdaklfhjklavlqajgfqoiasdjvalvm,
+    </div>
+    <div id="box3"></div>
+    <div id="box4"></div>
+    <div id="box5"> sunck is a nice man</div>
+    <div id="box6"></div>
+    <div id="box7"></div>
+</body>
+</html>

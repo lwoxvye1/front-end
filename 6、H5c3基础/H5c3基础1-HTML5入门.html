@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-3.3.1.min.js" type="text/javascript" charset="UTF-8"></script>
+</head>
+<body>
+<!--
+一、html5新标签:
+结构性标签:<article> <footer> <header> <nav>(导航栏) <section>
+非结构性标签:<audio> <video>  <canvas> <command>  <datalist>  <details>  <figure>
+             <mark>  <progress>  <source>   <time>
+-->
+    <label>
+        <input type="text" list="data" placeholder="请选择">
+    </label>
+    <datalist id="data">
+        <option>good</option>
+        <option>nice</option>
+        <option>handsome</option>
+        <option>cool</option>
+    </datalist>
+
+    <details>
+        <summary>sunck</summary>
+        <p>sunck is a good man</p>
+    </details>
+
+    <style>
+        mark{
+            background-color: red;
+            color: blue;
+        }
+    </style>
+    <p>sunck is a <mark>good</mark> man</p>
+
+    <progress id="pro" max="100" value="0"></progress>
+    <script type="text/javascript">
+        let num = 0;
+        setInterval(function () {
+            $("#pro").val(num + "");
+            num += 10;
+        }, 1000);
+    </script>
+
+<!--
+二、表单的新特性
+1、新增的表单类型
+email   url     number    range   Date pickers    search    color
+2、表单新特性和函数
+placeholder     autocomplete(自动补全)  autofocus(聚焦)   list特性和datalist
+required(不填写则不能提交)  pattern(正则)     form(属于表单)      disabled(禁用)
+readonly(只读)    multiple(多选)
+-->
+    <form action="" id="form">
+        <label>
+            <input type="range" max="100" min="0" value="10" step="10">
+            <input type="date">
+            <input type="week">
+            <input type="month">
+            <input type="datetime-local">
+            <input type="time">
+            <input type="search">
+            <input type="color">
+
+            <input type="text" autocomplete="on" autofocus="autofocus" required pattern="\d+">
+            <!--autocomplete属性也可以写到form标签里-->
+
+            <input type="submit">
+        </label>
+    </form>
+    <label>
+        <input type="text" form="form">
+    </label>
+
+
+<!--
+三、拖放API
+拖放事件:
+    dragstart:网页元素开始拖动时触发。
+    drag:被拖动的元素在拖动过程中持续触发
+    dragenter:被拖动的元素进入目标元素时触发，应在目标元素监听该事件
+    dragleave:被拖动的元素离开目标元素时触发，应在目标元素监听该事件
+    dragover:被拖动元素停留在目标元素之中时持续触发，应在目标元素监听该事件
+    drop:被拖动元素或从文件系统选中的文件，拖放落下时触发
+    dragend:网页元素拖放结束时触发
+实现拖放的步骤:
+    1、将想要拖放的对象元素的draggable属性设为true
+    2、拖动什么  -- ondragstart 和 setData()
+    3、放到何处  -- ondragover()
+    4、进行放置  -- ondrop 和 getData()
+-->
+    <div id="box1" style="border: 1px solid black; width: 500px; height: 400px">
+        <img src="1.jpg " draggable="true" alt="" id="img">
+    </div>
+    <div id="box2" style="border: 1px solid black; width: 500px; height: 400px"></div>
+    <script type="text/javascript">
+        window.onload = function () {
+            let box1 = document.getElementById("box1");
+            let box2 = document.getElementById("box2");
+            let img = document.getElementById("img");
+            // 设置你想拖放的内容
+            img.ondragstart = function (e) {
+                let data = e.dataTransfer;
+                data.setData("text/plain", this.id);
+            };
+            // 设置目标元素允许接收拖放元素
+            box2.ondragover = function (e) {
+                e.preventDefault()  // 取消默认行为
+            };
+            // 取出你拖放的内容
+            box2.ondrop = function (e) {
+                let data = e.dataTransfer;
+                let text = data.getData("text/plain");
+                // 插入
+                e.target.appendChild(document.getElementById(text))
+            };
+
+            img.ondragstart = function (e) {
+                let data = e.dataTransfer;
+                data.setData("text/plain", this.id);
+            };
+            box1.ondragover = function (e) {
+                e.preventDefault()  // 取消默认行为
+            };
+            box1.ondrop = function (e) {
+                let data = e.dataTransfer;
+                let text = data.getData("text/plain");
+                // 插入
+                e.target.appendChild(document.getElementById(text))
+            }
+        }
+    </script>
+</body>
+</html>
