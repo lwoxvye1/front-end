@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>Title</title>
+    <!--
+    国内现状多数都基于Webkit开发
+
+    视口viewport
+        移动端屏幕比pc端屏幕小很多，因此一个针对桌面设计的界面不一定能很好的使用到移动端。
+        所以，响应式来了。
+        <meta name="viewport" content="init-scale=1.0,maximum-scale=1.0,
+        minimum-scale=1.0,user-scalable=no" />
+        即视口大小和屏幕一样大。
+
+        width:设置布局视口的宽度为特定的值
+        init-scale: 设置页面的初始缩放程度和布局视口的宽度
+        minimum-scale: 设置了最小缩放程度(用户可缩小的程度)
+        maximum-scale: 设置了最大缩放程度(用户可放大的程度)
+        user-scalable: 是否阻止用户进行缩放
+    -->
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box ul{
+            flex-wrap: wrap;
+        }
+        #box li{
+            display: flex;
+            border-bottom: 1px solid gray;
+            flex-direction: row;
+            flex-grow: 1;
+        }
+        #box li div:nth-of-type(1){
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        #box li div:nth-of-type(2){
+            width: 200px;
+            height: 100px;
+            background-color: yellow;
+            flex-grow: 2;
+        }
+        nav{
+            height: 49px;
+            background-color: gainsboro;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li{
+            flex-grow: 1;
+            line-height: 49px;
+            text-align: center;
+        }
+        nav ul li a{
+            text-decoration: none;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+            </li>
+        </ul>
+    </div>
+
+    <nav id="nav">
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">闪送超市</a></li>
+            <li><a href="#">购物车</a></li>
+            <li><a href="#">我的</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

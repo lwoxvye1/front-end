@@ -3,8 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style type="text/css">
+        /*
+        响应式布局
+            响应式布局是Ethan Marcotte在2010年5月份提出的一个概念，简而言之，就是一个网站能够兼容
+            多个终端——而不是为每个终端做一个特定的版本。这个概念是为解决移动互联网浏览而诞生的。
+
+        Web的Flex弹性盒模型
+
+            Flex是Flexible Box的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性。任何一个
+            容器都可以指定为Flex布局display: flex;行内元素也可以使用Flex布局。display: inline-flex;
+            注意:设为Flex布局后，子元素的float、clear和vertical-align属性将失效。
+
+        基本概念:
+            采用Flex布局的元素，称为Flex容器。它的所有子元素自动成为容器成员，称为Flex项目。
+            容器默认存在两根轴:水平的主轴和垂直的交叉轴。主轴的开始位置(与边框的交叉点)叫做
+            main start，结束位置叫做main end;交叉轴的开始位置叫做cross start,结束位置叫做
+            cross end。
+            项目默认沿主轴排列。每个项目占据的主轴空间叫做main size,占据的交叉轴空间叫做
+            cross size。
+        */
+
+        /*容器属性*/
+        #box{
+            width: 700px;
+            height: 300px;
+            background-color: gray;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;    /*  flex-direction 属性决定主轴的方向
+                                        flex-direction: row     flex-direction: column
+                                        flex-direction: row-reverse   flex-direction: column-reverse
+                                    */
+            flex-wrap: wrap;       /*
+                                        flex-wrap属性 默认情况下，项目都排在一条线(又称"轴线")上。
+                                        flex-wrap属性定义，如果一条轴线排不下，如何换行
+                                        flex-wrap: nowrap(默认)   flex-wrap: wrap
+                                        flex-wrap: wrap-reverse
+                                    */
+            justify-content: space-around;  /*
+                                        justify-content属性定义了项目在主轴上的对齐方式
+                                        justify-content: flex-start(默认)
+                                        justify-content: flex-end
+                                        justify-content: center
+                                        justify-content: space-between
+                                        justify-content: space-around
+                                    */
+            /*align-items: center;*//*
+                                        align-items属性定义项目在交叉轴上如何对齐
+                                        align-items: flex-start
+                                        align-items: flex-end
+                                        align-items: center
+                                        align-items: baseline; 第一个元素margin-top: 10px;
+                                        align-items: stretch(默认)
+                                    */
+            align-content: center;  /*
+                                        align-content属性定义了多根轴线对齐方式。如果项目只有
+                                        一根轴线，该属性不起作用。
+                                        多根轴用align-content，单根轴用align-items
+                                        align-content: flex-start
+                                        align-content: flex-end
+                                        align-content: center
+                                        align-content: stretch
+                                        align-content: space-around
+                                        align-content: space-between
+                                    */
+        }
+        #box div{
+            width: 200px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center ;
+        }
+        /*
+        项目属性
+            order 属性
+                定义项目的排列顺序，数值越小，排列越考前，默认为0
+            flex-grow属性
+                flex-grow属性定义项目的放大比例，默认为0
+                如果所有项目的flex-grow属性都为1，则它们将等分剩余空间(如果有的话)。如果一个
+                项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其它多一倍
+            flex-shrink属性
+                flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小
+                负值对该属性无效
+            flex-basis属性
+                flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间。浏览器根据这个
+                属性，计算主轴是否有多余空间。他的默认值为auto，即项目本身的大小
+                它可以设为跟width或height属性一样的值，则项目将占据固定空间
+            align-self属性
+                align-self属性允许单个项目有与其它项目不一样的对齐方式，可覆盖align-items属性。
+                默认值为auto，表示继承父元素的align-items属性，如果没有父元素。则等同于stretch
+        */
+        .item1{
+            background-color: red;
+            order: 2;
+            flex-grow: 1;
+        }
+        .item2{
+            background-color: yellow;
+            order: 1;
+            flex-grow: 2;
+        }
+        .item3{
+            background-color: pink;
+            order: 3;
+            flex-grow: 1;
+        }
+    </style>
 </head>
 <body>
-
+    <div id="box">
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>
+    </div>
 </body>
 </html>
