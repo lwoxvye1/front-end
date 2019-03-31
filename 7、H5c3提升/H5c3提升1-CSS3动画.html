@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        /*
+        如何做动画
+
+        转换transform
+        动画@keyframes规则，animation属性
+        过度transition
+        RequestAnimationFrame
+        setInterval
+        动画算子
+        动画库用jquery封装，Velocity.js
+        */
+
+        /*
+        transform功能的分类
+        一、实现缩放
+            语法：transform: scale(缩放倍率);或者
+                  transform: scale(水平缩放倍率, 垂直缩放倍率);
+        二、实现倾斜
+            语法：transform: skew(水平方向的倾斜角度);或者
+                  transform: skew(水平方向的倾斜角度, 垂直方向的倾斜角度);
+
+        指定变形的基准点
+            在使用transform方法进行文字或图像变形的时候，是以元素的中心点为基准点进行变形的，
+            使用transform-origin属性，可以改变变形的基准点
+            语法：transform-origin: 基准点在水平方向上的位置, 在垂直方向上的位置;
+
+        三、实现移动
+            语法: transform:translate(水平方向的移动距离);或者
+                  transform: translate(水平方向的移动距离, 垂直方向的移动距离);
+
+        3D变形可以实现元素在X轴、Y轴、Z轴方向上的旋转、缩放、倾斜以及移动变形处理
+        一、旋转
+            语法: transform: rotateX(45deg);
+                  transform: rotateY(45deg);
+                  transform: rotateZ(45deg);
+                  或者: transform: rotateX(45deg)rotateY(45deg)rotateZ(45deg);
+        二、缩放
+            语法: transform: scaleX(0.5);
+                  transform: scaleY(1);
+                  transform: scaleZ(2);
+                  或者: transform: scaleX(0.5)scaleY(1)scaleZ(2);
+        三、倾斜
+            语法: transform: skewX(45deg);
+                  transform: skewY(45deg);
+                  和2D效果类似
+        四、移动
+            语法: transform: translateX(50px);
+                  transform: translateY(100px);
+                  transform: translateZ(20px);
+        */
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 400px;
+            background-color: red;
+            margin-bottom: 100px;
+            text-align: center;
+        }
+        div:first-child{
+            transform: skew(45deg);
+        }
+        div:last-child{
+            /*transform-origin: left;*/
+            /*transform: scale(0.5);*/
+            transform: translate(100px, 200px);
+        }
+        /*
+        CSS3中的动画功能
+            CSS3中的动画功能分为Animations功能与Transitions功能，这两种功能都可以通过改变
+            CSS中的属性值来产生动画效果
+            1、Animations功能支持通过关键帧的指定来在页面上产生更复杂的动画效果
+            2、Transitions功能支持从一个属性值平滑过度到另一个属性值
+        */
+
+        /*
+        Transitions功能
+            语法: transition:property     duration    timing-function     delay;
+                  property:表示对哪个属性操作
+                  duration:表示在多久时间内完成属性值的平滑过程
+                  timing-function:表示通过什么方法平滑过度
+                  delay:表示延迟多长时间开始执行特效
+            分别对应三个属性:
+                  transition-property、transition-duration、transition-timing-function、
+                  transition-delay
+        */
+        #div4{
+            width: 300px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            background-color: yellow;
+
+            transition: height 2s linear 0s;
+        }
+        /*#div4:hover{*/
+            /*height: 200px;*/
+        /*}*/
+
+        /*
+        Animation功能的使用方法
+            我们在使用transition实现动画的时候只能指定要改变的属性的开始值和结束值，然后在
+            这两个值之间进行平滑过度的方式来实现动画效果，因此不能实现比较复杂的动画效果；
+            而animation通过定义多个关键帧以及定义每个关键帧中元素的属性值来实现更为复杂的
+            动画效果
+
+            在使用animation功能的时候，通过如下方法来创建关键帧的集合：
+            @keyframe关键帧集合名(创建关键帧的代码)
+            创建关键帧的代码类似如下：
+            40%{
+                本关键帧中的样式代码
+            }
+
+            下面列出了@keyframe规划和所有动画属性
+            @keyframe                   规定动画
+            animation                   所有动画属性的简写属性，除了animation-play-state属性
+            animation-name              规定@keyframe动画的名称
+            animation-duration          规定动画完成一个周期所花费的秒或毫秒，默认是0
+            animation-timing-function   规定动画的速度曲线。默认是"ease"
+            animation-delay             规定动画何时开始，默认是0
+            animation-iteration-count   规定动画被播放的次数，默认是1
+            animation-direction         规定动画是否在下一周期逆向地播放。默认是"normal"
+            animation-play-state        规定动画是否正在运行或暂停，默认是"running"
+            animation-fill-mode         规定对象动画时间以外的状态
+
+            实现动画的方法animation-timing-function的值
+            linear: 在动画开始时与结束时以同样速度进行改变
+            ease-in:动画开始时速度很慢，然后速度沿曲线值进行加快
+            ease-out:动画开始时速度很快，然后速度沿曲线值放慢
+            ease:动画开始时速度很慢，然后速度沿曲线值加快，然后在沿曲线值进行放慢
+            ease-in-out:动画开始时速度很慢，然后速度沿曲线值加快，然后在沿曲线值进行放慢
+        */
+        #div5{
+            width: 300px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+        }
+        @keyframes my_color {
+            0%{
+                background-color: pink;
+            }
+            25%{
+                background-color: brown;
+            }
+            50%{
+                background-color: orange;
+            }
+            100%{
+                background-color: goldenrod;
+            }
+        }
+        #div5:hover{
+            animation: my_color 5s linear 0s infinite reverse;
+        }
+        /*
+        总结
+            1、transform
+                CSS3中的变形处理，实现文字和图像的旋转、缩放、倾斜和移动等
+            2、transitions
+                CSS3中的动画功能，通过一个属性值平滑过度到另一个属性值来实现
+            3、animation
+                CSS3中的动画功能，通过在样式中创建多个关键帧，在这些关键帧中编写样式，并且能够
+                在页面上综合运行这些关键帧来实现较为复杂的动画
+        */
+        #div6{
+            width: 200px;
+            height: 200px;
+            margin: 200px auto;
+            border-radius: 50%;
+            background-color: purple;
+            border: 5px solid green;
+            position: relative;
+            animation: run 2s ease infinite;
+        }
+        #div6:before{
+            content: "";
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-color: gray;
+            border-radius: 50%;
+            position: absolute;
+            left: 90px;
+            margin-top: -10px;
+        }
+        @keyframes run {
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>sunck is a good man</div>
+    <div>sunck is a nice man</div>
+    <div>sunck is a cool man</div>
+
+    <div id="div4">sunck is a handsome man</div>
+    <button id="btn" onclick="func()">按钮</button>
+    <script type="text/javascript">
+        function func() {
+            document.getElementById("div4").style.height = "300px"
+        }
+    </script>
+
+    <div id="div5">sunck is a great man</div>
+
+    <div id="div6"></div>
+</body>
+</html>
